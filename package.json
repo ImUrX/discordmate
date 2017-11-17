@@ -1,0 +1,24 @@
+{
+  "name": "discordmate",
+  "version": "0.0.1",
+  "description": "Just a selfbot for discord that returns a tmate ssh link.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ImUrX/discordmate.git"
+  },
+  "keywords": [
+    "discord",
+    "selfbot",
+    "tmate"
+  ],
+  "author": "ImUrX",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ImUrX/discordmate/issues"
+  },
+  "homepage": "https://github.com/ImUrX/discordmate#readme"
+}
