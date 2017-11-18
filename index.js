@@ -10,7 +10,7 @@ client.on('ready', () => {
 client.on('message', async msg => {
   if(msg.author.id === client.user.id) {
       const args = msg.content.toLowerCase().split(" ");
-      if(msg.content.toLowerCase() === "ping") msg.channel.send("Pong!")
+
       if(args[0] === auth.prefix + "ssh") {
             if(args[1]) {
                 console.log("Starting tmate command...");
@@ -21,8 +21,9 @@ client.on('message', async msg => {
                     console.log(stderr);
                     return sent.edit("An error happened... Did you install tmate?");
                 }
-                console.log("tmate session at " + args[1] + "started!");
-                return sent.edit(`${stdout}`);
+                console.log("tmate session at " + args[1] + " started!");
+                console.log(stdout)
+                return sent.edit(`${stdout.toString('utf8')}`);
             }
         }
     }
