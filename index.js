@@ -31,6 +31,15 @@ client.on('message', async msg => {
                 return sent.edit(response.stdout);
             }
         }
+        if(args[0] === auth.prefix + "kill") {
+            if(args[1]) {
+                console.log("Starting kill command...");
+                const sent = await msg.channel.send("Killing a socket...");
+                const response = await exec(`rm /tmp/${args[1]}.sock`);
+                if(response.stderr) return sent.edit(response.stderr);
+                return sent.edit("Success!");
+            }
+        }
     }
 });
 
