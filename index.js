@@ -16,14 +16,14 @@ client.on('message', async msg => {
                 console.log("Starting tmate command...");
                 const sent = await msg.channel.send("Making a new socket...");
                 await exec(`tmate -S /tmp/${args[1]}.sock new-session -d`);
-                const { stdout, stderr } = await exec(`tmate -S /tmp/${args[1]}.sock display -p '#{tmate_ssh}'`);
-                if(stderr) {
-                    console.log(stderr);
+                const response = await exec(`tmate -S /tmp/${args[1]}.sock display -p '#{tmate_ssh}'`);
+                if(response.stderr) {
+                    console.log(response.stderr);
                     return sent.edit("An error happened... Did you install tmate?");
                 }
                 console.log("tmate session at " + args[1] + " started!");
-                console.log(stdout)
-                return sent.edit(`${stdout.toString('utf8')}`);
+                console.log(response);
+                return sent.edit(response.stdout);
             }
         }
     }
