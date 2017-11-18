@@ -7,7 +7,7 @@ client.on('ready', () => {
   console.log('I am ready to do some tmate working!');
 });
 
-client.on('message', msg => {
+client.on('message', async msg => {
   if(msg.author.id === this.client.user.id) {
       const args = msg.content.toLowerCase().split(" ");
       if(args[0] === auth.prefix + "tmate") {
