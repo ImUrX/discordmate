@@ -20,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/ImUrX/discordmate/issues"
   },
-  "homepage": "https://github.com/ImUrX/discordmate#readme"
+  "homepage": "https://github.com/ImUrX/discordmate#readme",
+  "dependencies": {
+    "bufferutil": "^3.0.3",
+    "discord.js": "github:hydrabolt/discord.js",
+    "erlpack": "github:hammerandchisel/erlpack",
+    "uws": "^8.14.1"
+  }
 }
