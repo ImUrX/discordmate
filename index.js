@@ -35,7 +35,7 @@ client.on('message', async msg => {
             if(args[1]) {
                 console.log("Starting kill command...");
                 const sent = await msg.channel.send("Killing a socket...");
-                const response = await exec(`rm /tmp/${args[1]}.sock`);
+                const response = await exec(`rm /tmp/${args[1]}.sock`).catch(e => sent.edit(e));
                 if(response.stderr) return sent.edit(response.stderr);
                 return sent.edit("Success!");
             }
