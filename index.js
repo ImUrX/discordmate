@@ -9,20 +9,25 @@ client.on('ready', () => {
 
 client.on('message', async msg => {
   if(msg.author.id === client.user.id) {
-      const args = msg.content.toLowerCase().split(" ");
-
-      if(args[0] === auth.prefix + "ssh") {
+        const args = msg.content.toLowerCase().split(" ");
+        if(args[0] === auth.prefix + "ssh") {
             if(args[1]) {
-                console.log("Starting tmate command...");
+                console.log("Starting ssh command...");
                 const sent = await msg.channel.send("Making a new socket...");
                 await exec(`tmate -S /tmp/${args[1]}.sock new-session -d`);
+                return sent.edit("Done!");
+            }
+        }
+        if(args[0] === auth.prefix + "link") {
+            if(args[1]) {
+                console.log("Starting link command...");
+                const sent = await msg.channel.send("Reading stdout...");
                 const response = await exec(`tmate -S /tmp/${args[1]}.sock display -p '#{tmate_ssh}'`);
                 if(response.stderr) {
-                    console.log(response.stderr);
-                    return sent.edit("An error happened... Did you install tmate?");
+                    console.log(stderr);
+                    return sent.edit("An error happened, do you really have a session by the name of " + args[1] + "?");
                 }
-                console.log("tmate session at " + args[1] + " started!");
-                console.log(response);
+                console.log(response.stdout);
                 return sent.edit(response.stdout);
             }
         }
