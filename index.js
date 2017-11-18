@@ -10,7 +10,8 @@ client.on('ready', () => {
 client.on('message', async msg => {
   if(msg.author.id === client.user.id) {
       const args = msg.content.toLowerCase().split(" ");
-      if(args[0] === auth.prefix + "tmate") {
+      if(msg.content.toLowerCase() === "ping") msg.channel.send("Pong!")
+      if(args[0] === auth.prefix + "ssh") {
             if(args[1]) {
                 console.log("Starting tmate command...");
                 const sent = await msg.channel.send("Making a new socket...");
