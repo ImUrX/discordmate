@@ -8,7 +8,7 @@ client.on('ready', () => {
 });
 
 client.on('message', async msg => {
-  if(msg.author.id === auth.id) {
+  if(msg.author.id === client.user.id) {
       const args = msg.content.toLowerCase().split(" ");
       if(args[0] === auth.prefix + "tmate") {
             if(args[1]) {
