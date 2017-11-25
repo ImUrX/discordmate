@@ -14,7 +14,7 @@ client.on('message', async msg => {
             if(args[1]) {
                 console.log("Starting ssh command...");
                 const sent = await msg.channel.send("Making a new socket...");
-                await exec(`tmate -S /tmp/${args[1]}.sock new-session -d`);
+                await exec(`TMUX= tmate -S /tmp/${args[1]}.sock new-session -d`);
                 return sent.edit("Done!");
             }
         }
@@ -22,7 +22,7 @@ client.on('message', async msg => {
             if(args[1]) {
                 console.log("Starting link command...");
                 const sent = await msg.channel.send("Reading stdout...");
-                const response = await exec(`tmate -S /tmp/${args[1]}.sock display -p '#{tmate_ssh}'`);
+                const response = await exec(`TMUX= tmate -S /tmp/${args[1]}.sock display -p '#{tmate_ssh}'`);
                 if(response.stderr) {
                     console.log(stderr);
                     return sent.edit("An error happened, do you really have a session by the name of " + args[1] + "?");
